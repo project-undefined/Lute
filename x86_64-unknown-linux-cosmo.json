@@ -1,0 +1,11 @@
+{
+  "arch": "arm",
+  "endian": "little",
+  "env": "",
+  "features": "+mclass,+v7",
+  "max-atomic-width": 32,
+  "target-pointer-width": 32,
+  "linker-flavor": "gcc",
+  "llvm-target":"armv7r-none-eabi"
+
+}
