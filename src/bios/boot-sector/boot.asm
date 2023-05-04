@@ -14,11 +14,9 @@ _start:
     MOV bp, 0x7c00
     MOV sp, 0x7c00
     sti
-
     call BootMain
-
-    ret
+    
+    hlt
     times 510-($-$$) db 0
-    db 0x55
-    db 0xaa
-
+db 0x55
+db 0xaa
