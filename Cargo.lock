@@ -3,5 +3,5 @@
 version = 3
 
 [[package]]
-name = "Lute"
+name = "lute"
 version = "0.1.0"

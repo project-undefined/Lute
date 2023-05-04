@@ -4,7 +4,7 @@
 
 use core::arch::asm; 
 
-pub unsafe fn ClearScreen() {
+pub unsafe fn clear_screen() {
     asm!{ 
         "mov al, 02h",
         "mov ah, 00h",
@@ -15,7 +15,7 @@ pub unsafe fn ClearScreen() {
 #[no_mangle]
 pub extern "C" fn BootMain() {
     unsafe {
-        ClearScreen();
+        clear_screen();
         asm!{
             "mov dx,'A'",
             "mov ah, 2",

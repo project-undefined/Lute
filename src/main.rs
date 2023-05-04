@@ -6,8 +6,8 @@
 #![no_core]
 
 
-#[lang="sized"]
-trait Sized {}
+//#[lang="sized"]
+//trait Sized {}
 
 #[no_mangle] 
 fn _start() -> ! {
