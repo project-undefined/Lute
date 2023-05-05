@@ -1,10 +1,11 @@
 clear
 echo -e "\033[1;32mRunning \`nasm\`\033[0m"
 echo ""
-nasm -f elf64 -F dwarf -g boot.asm -o ./out/boot.o
+as boot.s -o ./out/boot.o
 echo -e "\033[1;32mRunning \`rustc\`\033[0m"
 echo ""
-rustc -C opt-level=z -C panic=abort -C strip=symbols boot.rs -o ./out/libboot.o
+rustc -C panic=abort boot.rs -o ./out/libboot.rlib
+ar x ./out/libboot.rlib --output=./out/
 echo -e "\033[1;32mRunning \`ld\`\033[0m"
 echo ""
-ld --gc-sections --verbose -nostdlib --strip-all -static --oformat binary -e _start -T ./script.ld ./out/boot.o ./out/libboot.o  -o  ./out/bootloader.bin
+ld --gc-sections -T./script.ld --oformat binary -e _start ./out/boot.o ./out/libboot.boot.* -o  ./out/bootloader.bin
