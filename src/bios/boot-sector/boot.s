@@ -1,4 +1,3 @@
-
 .code64
 .extern _boot_main
 .globl _start

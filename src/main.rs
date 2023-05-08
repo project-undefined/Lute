@@ -17,6 +17,7 @@
 //    = note: the lang item is first defined in crate `core` (which `std` depends on)
 //    = note: first definition in `core` loaded from \\?\C:\Users\[REDACTED]\.rustup\toolchains\nightly-x86_64-pc-windows-msvc\lib\rustlib\x86_64-pc-windows-msvc\lib\libcore-798bc7c2d986ac97.rlib
 //    = note: second definition in the local crate (`lute`)
+// NOTE: This will be removed once full stages are complete, development is in the bios folder
 #[lang="sized"]
 trait Sized {}
 
