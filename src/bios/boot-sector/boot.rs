@@ -1,4 +1,4 @@
-#![crate_type = "rlib"]
+#![crate_type = "staticlib"]
 #![no_std]
 #![no_main]
 
