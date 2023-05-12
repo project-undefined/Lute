@@ -10,6 +10,23 @@ use core::panic::PanicInfo;
 pub const STAGE_ONE_OFFSET: u16 = 0x1000;
 
 #[no_mangle]
+pub extern "C" fn _start() {
+    unsafe {
+        asm! { 
+            "cli",
+            "MOV rax, cs",
+            "MOV ds,  rax",
+            "MOV es,  rax",
+            "MOV ss,  rax", 
+            "MOV rbp, 0x7c00",
+            "MOV rsp, 0x7c00", 
+            "sti"
+        }
+        _boot_main();
+    }
+}
+
+#[no_mangle]
 pub extern "C" fn _boot_main() {
     unsafe {
         _clear_screen();
