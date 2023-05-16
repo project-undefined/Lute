@@ -1,3 +1,5 @@
+/* meant to start the phase1 and initialize the bootloader */
+/* we want minimal code here */
 #![crate_type = "staticlib"]
 #![no_std]
 #![no_main]
@@ -35,12 +37,6 @@ pub extern "C" fn _start() {
 pub extern "C" fn _boot_main() {
     unsafe {
         _clear_screen();
-        
-        // write "O" on screen
-        asm! {
-            "mov rax, 0x0e4f",
-            "int 0x10"
-        }    
         _load_on_disk();
     }
 }
@@ -55,12 +51,12 @@ pub extern "C" fn _load_on_disk() {
             "push dx",
             "mov ah, 0x02",         // read mode
             "mov al, dh",           // read dh # of sectors
-            "mov cl, 0x02",         // start from sector 1
+            "mov cl, 0x02",         // start from sector 2
             "mov ch, 0x00",         // start from cylinder 0
             "mov dh, 0x00",         // head 0
             "int 0x13",             // BIOS interrupt
 
-            "jc panic_nodata",     // panic if bit error
+            "jc panic_nodata",      // panic if bit error
 
             "pop dx",               // get back sectors to read
             "cmp al, dh",           //sets al to # of sectors to read
