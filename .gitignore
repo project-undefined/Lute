@@ -1,2 +1,4 @@
 /target
+/src/bios/*/target
+/src/bios/*/out
 Cargo.lock

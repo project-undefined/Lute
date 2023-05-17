@@ -46,10 +46,12 @@ pub extern "C" fn _boot_main() {
 #[no_mangle]
 pub extern "C" fn _load_on_disk() {
     unsafe {
-    
+        /* TODO: Needs to be tested, sector reading needs to be dynamic to allow for any phase2/phase3 size */
+        /* TODO: Decide whether to decrease phase sizes or not, more research needs to be put in for this */
         asm! { 
             "push dx",
             "mov ah, 0x02",         // read mode
+            "mov dh, 0x4B6F",       // 19311 sectors (~9.89M), TODO: Need to be tested 
             "mov al, dh",           // read dh # of sectors
             "mov cl, 0x02",         // start from sector 2
             "mov ch, 0x00",         // start from cylinder 0
